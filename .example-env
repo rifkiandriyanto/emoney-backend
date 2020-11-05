@@ -1,0 +1,11 @@
+APP_PORT=8080
+APP_URL=http://192.168.0.10:8080/
+APP_KEY=$2y$12$dd./8bLkk.ZRwFiRMdNnIOSinisdHif.xO0jB7U5sNc6CokOXyOcS
+
+DB_HOST=localhost
+DB_USER=root
+DB_PASS=
+DB_NAME=antoo
+
+NODEMAILER_EMAIL=antoo.developers@gmail.com
+NODEMAILER_PASSWORD=sahdhdft827y@

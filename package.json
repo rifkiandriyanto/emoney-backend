@@ -1,0 +1,43 @@
+{
+  "name": "ewallet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+hhttps://github.com/rifkiandriyanto/emoney-backend.git"
+  },
+  "keywords": [
+    "express",
+    "e-money",
+    "ewallet",
+    "etc"
+  ],
+  "author": "antoo backend developers",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rifkiandriyanto/emoney-backend/issues"
+  },
+  "homepage": "https://github.com/rifkiandriyanto/emoney-backend#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.27.0",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "mustache": "^4.0.1",
+    "mysql": "^2.18.1",
+    "nodemailer": "^6.4.10",
+    "nodemon": "^2.0.6",
+    "querystring": "^0.2.0",
+    "validator": "^13.1.1"
+  }
+}
