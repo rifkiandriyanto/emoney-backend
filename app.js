@@ -1,9 +1,10 @@
-const express = require("express");
+const express = require('express');
 const app = express();
-const morgan = require("morgan");
-const cors = require("cors");
-const bodyParser = require("body-parser");
-const {port} = require('./src/configs')
+const morgan = require('morgan');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const { port } = require('./src/configs');
+const mainNavigation = require('./src/routes');
 
 app.use(
   bodyParser.urlencoded({
@@ -11,22 +12,16 @@ app.use(
   })
 );
 app.use(bodyParser.json());
-app.use(morgan("dev"));
+app.use(morgan('dev'));
 app.use(cors());
-app.use("/public", express.static("public"));
-app.use("/user", express.static("src/assets/user"));
-app.use("/banner", express.static("src/assets/banner"));
+app.use('/', mainNavigation);
 
-
-app.use("/auth", require("./src/routes/auth"));
-app.use("/transaction", require("./src/routes/transaction"));
-app.use("/profile", require("./src/routes/profile"));
-app.use("/user", require("./src/routes/user"));
-app.use("/transaction_type", require("./src/routes/transactionType"));
-app.use("/promo", require("./src/routes/promo"));
-
-app.listen(port, console.log(`This server is running on port ${port}`), (err) => {
-  if (err) {
-    throw err;
+app.listen(
+  port,
+  console.log(`This server is running on port ${port}`),
+  (err) => {
+    if (err) {
+      throw err;
+    }
   }
-});
+);

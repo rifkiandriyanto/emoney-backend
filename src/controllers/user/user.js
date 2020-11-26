@@ -2,11 +2,11 @@ const getUserData = require("../../models/user/getUserData");
 const getUserDataById = require("../../models/user/getUserDataById");
 const deletingUser = require("../../models/auth/deleteUser");
 const response = require("../../utils/response");
-require("dotenv").config();
+const { url } = require('../../configs')
 
 module.exports = {
   getAllUsers: async (req, res) => {
-    const { APP_URL } = process.env;
+   
     try {
       const getUser = await getUserData();
       res.status(200).send(
@@ -16,7 +16,7 @@ module.exports = {
           getUser.map((val) => ({
             ...val,
             ...{
-              image: APP_URL.concat(
+              image: url.concat(
                 val.image === "me.png" || !val.image
                   ? "public/me.png"
                   : val.image
@@ -30,7 +30,7 @@ module.exports = {
     }
   },
   getUserById: async (req, res) => {
-    const { APP_URL } = process.env;
+   
     try {
       const { id } = req.params;
       const getUser = await getUserDataById({ id: parseInt(id) });
@@ -41,7 +41,7 @@ module.exports = {
           getUser.map((val) => ({
             ...val,
             ...{
-              image: APP_URL.concat(
+              image: url.concat(
                 val.image === "me.png" || !val.image
                   ? "public/me.png"
                   : val.image

@@ -2,7 +2,6 @@ const response = require('../utils/response');
 const jsonWebToken = require('jsonwebtoken');
 const { jwt_key } = require('../configs');
 
-require('dotenv').config();
 module.exports = (req, res, next) => {
   try {
     let authorization = req
