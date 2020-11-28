@@ -10,6 +10,6 @@ module.exports = {
   port: process.env.APP_PORT,
   jwt_key: process.env.APP_KEY,
   url: process.env.APP_URL,
-  nodemailer_mail: process.env.NODEMAILER_EMAIL,
+  nodemailer_email: process.env.NODEMAILER_EMAIL,
   nodemailer_password: process.env.NODEMAILER_PASSWORD,
 };

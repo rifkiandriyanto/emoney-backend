@@ -1,6 +1,6 @@
-const router = require("express").Router();
-const getAllTransactionTypeController = require("../controllers/transactionType/getAll");
+const Router = require('express').Router();
+const getAllTransactionTypeController = require('../controllers/transactionType/getAll');
 
-router.get("/", getAllTransactionTypeController);
+Router.get('/', getAllTransactionTypeController);
 
-module.exports = router;
+module.exports = Router;

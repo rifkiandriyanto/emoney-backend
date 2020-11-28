@@ -1,9 +1,9 @@
 const {
   resetPassword: resetPasswordValidator,
-} = require("../../validators/auth");
-const resetPasswordModel = require("../../models/auth/changePassword");
-const bcrypt = require("bcryptjs");
-const response = require("../../utils/response");
+} = require('../../validators/auth');
+const resetPasswordModel = require('../../models/auth/changePassword');
+const bcrypt = require('bcryptjs');
+const response = require('../../utils/response');
 
 module.exports = async (req, res) => {
   const { status, msg, passed } = await resetPasswordValidator(req.body);

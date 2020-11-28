@@ -1,6 +1,6 @@
-const activation = require("../../models/auth/activation");
-const { activation: activationValidator } = require("../../validators/auth");
-const response = require("../../utils/response");
+const activation = require('../../models/auth/activation');
+const { activation: activationValidator } = require('../../validators/auth');
+const response = require('../../utils/response');
 
 module.exports = async (req, res) => {
   const { status, passed, msg } = await activationValidator(req.body);
