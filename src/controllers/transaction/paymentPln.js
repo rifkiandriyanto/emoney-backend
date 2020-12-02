@@ -1,9 +1,9 @@
-const paymentPlnModel = require("../../models/transaction/plnPayment");
+const paymentPlnModel = require('../../models/transaction/plnPayment');
 const {
   paymentPln: paymentPlnValidator,
-} = require("../../validators/transaction");
-const plnGenerator = require("../../utils/plnGenerator");
-const response = require("../../utils/response");
+} = require('../../validators/transaction');
+const plnGenerator = require('../../utils/plnGenerator');
+const response = require('../../utils/response');
 
 module.exports = async (req, res) => {
   const plnGeneratorProccess = await plnGenerator(25);
@@ -17,7 +17,7 @@ module.exports = async (req, res) => {
       const consumePlnPaymentModel = await paymentPlnModel(
         paymentPlnValidatorChecked.passed
       );
-      res.status(200).send(response(true, "Success", consumePlnPaymentModel));
+      res.status(200).send(response(true, 'Success', consumePlnPaymentModel));
     } catch (e) {
       delete paymentPlnValidatorChecked.passed.tokenPln;
       res

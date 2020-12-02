@@ -1,6 +1,6 @@
-const transferModel = require("../../models/transaction/transfer");
-const { transfer: transferValidator } = require("../../validators/transaction");
-const response = require("../../utils/response");
+const transferModel = require('../../models/transaction/transfer');
+const { transfer: transferValidator } = require('../../validators/transaction');
+const response = require('../../utils/response');
 
 module.exports = async (req, res) => {
   const { passed, msg, status } = await transferValidator({

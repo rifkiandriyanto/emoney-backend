@@ -1,8 +1,8 @@
 module.exports = {
-  throw: (status, msg = "", passed = {}) => ({
+  throw: (status, msg = '', passed = {}) => ({
     status,
     msg,
     passed,
   }),
-  safeString: (string) => string || "",
+  safeString: (string) => string || '',
 };

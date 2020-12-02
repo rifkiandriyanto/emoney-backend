@@ -1,4 +1,4 @@
-const connection = require("../../configs/connection");
+const connection = require('../../configs/connection');
 
 module.exports = async (data) => {
   const { email, password, otp } = data;
@@ -14,13 +14,13 @@ module.exports = async (data) => {
   return new Promise((resolve, reject) => {
     connection.beginTransaction((beginTransactionError) => {
       if (beginTransactionError) {
-        reject(new Error("transaction is failed"));
+        reject(new Error('transaction is failed'));
       } else {
         connection.query(sql, dataToSend, (queryError, insertedUser) => {
           if (queryError) {
             connection.rollback((rollbackError) => {
-              if (rollbackError) reject(new Error("error create user"));
-              else reject(new Error("error create user"));
+              if (rollbackError) reject(new Error('error create user'));
+              else reject(new Error('error create user'));
             });
           } else {
             if (insertedUser.affectedRows > 0) {
@@ -28,22 +28,22 @@ module.exports = async (data) => {
                 sql2,
                 {
                   user_id: insertedUser.insertId,
-                  full_name: "Yourname",
-                  phone_number: "00000000",
-                  image: "me.png",
+                  full_name: 'Yourname',
+                  phone_number: '00000000',
+                  image: 'me.png',
                 },
                 (queryError2, userDetailCreated) => {
                   if (queryError2) {
                     connection.rollback((rollbackError) => {
                       if (rollbackError)
-                        reject(new Error("error create detail user"));
-                      else reject(new Error("error create detail user"));
+                        reject(new Error('error create detail user'));
+                      else reject(new Error('error create detail user'));
                     });
                   } else {
                     if (userDetailCreated.affectedRows > 0) {
                       connection.commit((commitErr) => {
                         if (commitErr) {
-                          reject(new Error("error commit update user"));
+                          reject(new Error('error commit update user'));
                         } else {
                           resolve({
                             ...{ id: insertedUser.insertId },
@@ -54,8 +54,8 @@ module.exports = async (data) => {
                     } else {
                       connection.rollback((rollbackError) => {
                         if (rollbackError)
-                          reject(new Error("error create detail user"));
-                        else reject(new Error("error create detail user"));
+                          reject(new Error('error create detail user'));
+                        else reject(new Error('error create detail user'));
                       });
                     }
                   }
@@ -63,8 +63,8 @@ module.exports = async (data) => {
               );
             } else {
               connection.rollback((rollbackError) => {
-                if (rollbackError) reject(new Error("error create user"));
-                else reject(new Error("error create user"));
+                if (rollbackError) reject(new Error('error create user'));
+                else reject(new Error('error create user'));
               });
             }
           }

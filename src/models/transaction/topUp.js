@@ -1,4 +1,4 @@
-const connection = require('../../configs/connection')
+const connection = require('../../configs/connection');
 
 module.exports = async (data) =>
   new Promise((resolve, reject) => {
@@ -34,27 +34,32 @@ module.exports = async (data) =>
                   else reject(queryError2.message);
                 });
               } else
-                connection.query(sql, { amount, user_id, type_id }, (queryError3) => {
-                  if (queryError3 !== null)
-                    connection.rollback((rollbackError) => {
-                      if (rollbackError !== null) reject(rollbackError.message);
-                      else reject(queryError3.message);
-                    });
-                  else
-                    connection.commit((errorCommit) => {
-                      if (errorCommit !== null) {
-                        reject(errorCommit.message);
-                      }
-                      delete res[0].password;
-                      delete res[0].otp;
-                      delete res[0].isVerified;
-                      resolve({
-                        ...res[0],
-                        ...{ balance: res[0].balance + amount },
-                        amount,
+                connection.query(
+                  sql,
+                  { amount, user_id, type_id },
+                  (queryError3) => {
+                    if (queryError3 !== null)
+                      connection.rollback((rollbackError) => {
+                        if (rollbackError !== null)
+                          reject(rollbackError.message);
+                        else reject(queryError3.message);
                       });
-                    });
-                });
+                    else
+                      connection.commit((errorCommit) => {
+                        if (errorCommit !== null) {
+                          reject(errorCommit.message);
+                        }
+                        delete res[0].password;
+                        delete res[0].otp;
+                        delete res[0].isVerified;
+                        resolve({
+                          ...res[0],
+                          ...{ balance: res[0].balance + amount },
+                          amount,
+                        });
+                      });
+                  }
+                );
             }
           );
         }

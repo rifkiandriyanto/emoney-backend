@@ -1,6 +1,6 @@
-const topUpModel = require("../../models/transaction/topUp");
-const transactionValidator = require("../../validators/transaction");
-const response = require("../../utils/response");
+const topUpModel = require('../../models/transaction/topUp');
+const transactionValidator = require('../../validators/transaction');
+const response = require('../../utils/response');
 
 module.exports = async (req, res) => {
   const { status, passed, msg } = transactionValidator.topup({

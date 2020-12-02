@@ -1,4 +1,4 @@
-const connection = require("../../configs/connection");
+const connection = require('../../configs/connection');
 
 module.exports = (data) =>
   new Promise((resolve, reject) => {
@@ -9,7 +9,7 @@ module.exports = (data) =>
     const type_id = 3;
 
     connection.beginTransaction((beginTransactionError) => {
-      if (beginTransactionError) reject(new Error("begin transaction error"));
+      if (beginTransactionError) reject(new Error('begin transaction error'));
       else {
         connection.query(sql1, [user_id], (queryError, selectedUser) => {
           if (queryError) {

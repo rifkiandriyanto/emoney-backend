@@ -1,4 +1,4 @@
-const connection = require("../../configs/connection");
+const connection = require('../../configs/connection');
 
 module.exports = (data) =>
   new Promise((resolve, reject) => {
@@ -12,13 +12,13 @@ module.exports = (data) =>
 
     connection.beginTransaction((beginTransactionError) => {
       if (beginTransactionError) {
-        reject(new Error("Database error"));
+        reject(new Error('Database error'));
       } else {
         connection.query(sql1, [email_to], (queryError1, userTo) => {
           if (queryError1) {
             connection.rollback((rollbackError) => {
               if (rollbackError) reject(rollbackError.message);
-              else reject(new Error("Database error [Error get user to data]"));
+              else reject(new Error('Database error [Error get user to data]'));
             });
           } else {
             if (userTo.length > 0) {
@@ -28,7 +28,7 @@ module.exports = (data) =>
                     if (rollbackError) reject(rollbackError.message);
                     else
                       reject(
-                        new Error("Database error [Error get user from data]")
+                        new Error('Database error [Error get user from data]')
                       );
                   });
                 } else {
@@ -52,7 +52,7 @@ module.exports = (data) =>
                             else
                               reject(
                                 new Error(
-                                  "Database error [failed to create case]"
+                                  'Database error [failed to create case]'
                                 )
                               );
                           });
@@ -76,7 +76,7 @@ module.exports = (data) =>
                                     else
                                       reject(
                                         new Error(
-                                          "Database error [failed to update user from]"
+                                          'Database error [failed to update user from]'
                                         )
                                       );
                                   });
@@ -94,16 +94,18 @@ module.exports = (data) =>
                                       ],
                                       (queryError42, updatedUserTo) => {
                                         if (queryError42) {
-                                          connection.rollback((rollbackError) => {
-                                            if (rollbackError)
-                                              reject(rollbackError.message);
-                                            else
-                                              reject(
-                                                new Error(
-                                                  "Database error [failed to update user to]"
-                                                )
-                                              );
-                                          });
+                                          connection.rollback(
+                                            (rollbackError) => {
+                                              if (rollbackError)
+                                                reject(rollbackError.message);
+                                              else
+                                                reject(
+                                                  new Error(
+                                                    'Database error [failed to update user to]'
+                                                  )
+                                                );
+                                            }
+                                          );
                                         } else {
                                           if (updatedUserTo.affectedRows > 0) {
                                             delete userFrom[0].password;
@@ -121,7 +123,7 @@ module.exports = (data) =>
                                                     else
                                                       reject(
                                                         new Error(
-                                                          "Database error [failed to update user to]"
+                                                          'Database error [failed to update user to]'
                                                         )
                                                       );
                                                   }
@@ -140,16 +142,18 @@ module.exports = (data) =>
                                               }
                                             });
                                           } else {
-                                            connection.rollback((rollbackError) => {
-                                              if (rollbackError)
-                                                reject(rollbackError.message);
-                                              else
-                                                reject(
-                                                  new Error(
-                                                    "Database error [failed to update user from]"
-                                                  )
-                                                );
-                                            });
+                                            connection.rollback(
+                                              (rollbackError) => {
+                                                if (rollbackError)
+                                                  reject(rollbackError.message);
+                                                else
+                                                  reject(
+                                                    new Error(
+                                                      'Database error [failed to update user from]'
+                                                    )
+                                                  );
+                                              }
+                                            );
                                           }
                                         }
                                       }
@@ -161,7 +165,7 @@ module.exports = (data) =>
                                       else
                                         reject(
                                           new Error(
-                                            "Database error [failed to update user from]"
+                                            'Database error [failed to update user from]'
                                           )
                                         );
                                     });
@@ -175,7 +179,7 @@ module.exports = (data) =>
                               else
                                 reject(
                                   new Error(
-                                    "Database error [failed to create case]"
+                                    'Database error [failed to create case]'
                                   )
                                 );
                             });
@@ -189,7 +193,7 @@ module.exports = (data) =>
                       else
                         reject(
                           new Error(
-                            "Database error [data user id is not valid]"
+                            'Database error [data user id is not valid]'
                           )
                         );
                     });
@@ -200,7 +204,7 @@ module.exports = (data) =>
               connection.rollback((rollbackError) => {
                 if (rollbackError) reject(rollbackError.message);
                 else
-                  reject(new Error("Database error [data email is not valid]"));
+                  reject(new Error('Database error [data email is not valid]'));
               });
             }
           }
