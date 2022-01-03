@@ -16,6 +16,11 @@ app.use(morgan('dev'));
 app.use(cors());
 app.use('/', mainNavigation);
 
+app.use('/public', express.static('public'))
+app.use('/profile', express.static('/src/assets/user'))
+app.use('/banner', express.static('/src/assets/banner'));
+
+
 app.listen(
   port,
   console.log(`This server is running on port ${port}`),

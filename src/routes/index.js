@@ -6,10 +6,6 @@ Route.use('/auth', require('./auth'))
   .use('/profile', require('./profile'))
   .use('/user', require('./user'))
   .use('/transaction_type', require('./transactionType'))
-  .use('/promo', require('./promo'))
-
-  .use('/public', express.static('../../public'))
-  .use('/profile', express.static('../assets/user'))
-  .use('/banner', express.static('../assets/banner'));
+  .use('/promo', require('./promo'));
 
 module.exports = Route;
